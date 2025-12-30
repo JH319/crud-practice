@@ -27,18 +27,19 @@ public class MemberController {
         this.memberService = memberService;
     }
 
-    // 회원 생성 API
-    @PostMapping
-    public ResponseEntity<ApiResponse<MemberCreateResponseDto>> createMemberApi(@RequestBody MemberCreateRequestDto requestDto) {
+    // 회원 생성 API ---> 회원 가입 API
+    @PostMapping("/register")
+    public ResponseEntity<ApiResponse<MemberRegisterResponseDto>> memberRegisterApi(
+            @RequestBody MemberRegisterRequestDto requestDto) {
 
         // 핵심 비지니스 로직
-        MemberCreateResponseDto responseDto = memberService.createMember(requestDto);
+        MemberRegisterResponseDto responseDto = memberService.registerMember(requestDto);
 
         // 응답 반환
-        ApiResponse<MemberCreateResponseDto> apiResponse = new ApiResponse<>("created", 201, responseDto);
+        ApiResponse<MemberRegisterResponseDto> apiResponse = new ApiResponse<>("created", 201, responseDto);
 
         // ResponseEntity : 응답 객체를 잘 다룰 수 있게 스프링에서 지원해주는 response 클래스 / 제네릭 클래스임!
-        ResponseEntity<ApiResponse<MemberCreateResponseDto>> response = new ResponseEntity<>(apiResponse, HttpStatus.CREATED);
+        ResponseEntity<ApiResponse<MemberRegisterResponseDto>> response = new ResponseEntity<>(apiResponse, HttpStatus.CREATED);
 
         return response;
     }

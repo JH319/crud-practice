@@ -16,6 +16,12 @@ public class Member {
     @Column(name = "name", nullable = false, length = 20)
     private String name;
 
+    @Column(name = "email", nullable = false, length = 200)
+    private String email;
+
+    @Column(name = "password", nullable = false)
+    private String password;
+
     @Column(name = "created_at", nullable = false)  // 생성일
     private LocalDateTime createdAt;
 
@@ -29,8 +35,10 @@ public class Member {
     // 개발자한테까지 노출시켜 줄 필요가 없기 떄문에 protected 사용
     protected Member() {}
 
-    public Member(String name) {
+    public Member(String name, String email, String password) {
         this.name = name;
+        this.email = email;
+        this.password = password;
     }
 
     public Long getId() {
@@ -40,6 +48,8 @@ public class Member {
     public String getName() {
         return name;
     }
+
+    public String getPassword() {return password;}
 
     // 회원 수정
     public Member update(String newMemberName) {

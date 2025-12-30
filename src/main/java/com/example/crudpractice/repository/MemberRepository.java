@@ -12,4 +12,10 @@ public interface MemberRepository extends JpaRepository<Member, Long> {
 
     Optional<Member> findByIdAndIsDeletedFalse(Long memberId);
 
+    // 중복 이메일 여부 조회
+    Boolean existsByEmail(String email);
+
+    // 회원을 이메일로 조회
+    Optional<Member> findByEmail(String email);
+
 }

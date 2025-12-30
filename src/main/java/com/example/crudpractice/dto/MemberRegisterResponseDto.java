@@ -1,10 +1,10 @@
 package com.example.crudpractice.dto;
 
-public class MemberCreateResponseDto {
+public class MemberRegisterResponseDto {
 
     private Long id;
 
-    public MemberCreateResponseDto(Long id) {
+    public MemberRegisterResponseDto(Long id) {
         this.id = id;
     }
 
